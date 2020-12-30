@@ -38,7 +38,10 @@ class ContactController extends Controller
 
     public function myContact ($col_id)
     {
-        return $this->contact->getContact($this->request->user()->id, $col_id);
+        return $this->contact->getContact(
+            $this->request->user()->id, 
+            $col_id
+        );
     }
 
 
@@ -55,10 +58,16 @@ class ContactController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors(), 400);
+            return response()->json(
+                $validator->errors(), 
+                400
+            );
         }
 
-        return $this->contact->createContact($this->request->user()->id, $this->request->all());
+        return $this->contact->createContact(
+            $this->request->user()->id, 
+            $this->request->all()
+        );
     }
 
 
@@ -67,14 +76,20 @@ class ContactController extends Controller
 
     public function updateContact ($col_id)
     {
-        return $this->contact->updateContact($this->request->user()->id, $col_id, $this->request->all());
+        return $this->contact->updateContact(
+            $this->request->user()->id, 
+            $col_id, $this->request->all()
+        );
     }
 
 
 
     public function deleteContact ($col_id)
     {
-        return $this->contact->deleteContact($this->request->user()->id, $col_id);
+        return $this->contact->deleteContact(
+            $this->request->user()->id, 
+            $col_id
+        );
     }
 
 

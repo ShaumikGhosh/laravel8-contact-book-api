@@ -19,7 +19,10 @@ class UserController extends Controller
     {
         $this->repository = $repo;
         $this->request = $request;
-        $this->middleware('jwt.verify', ['except' => ['authenticate', 'register']]);    
+        $this->middleware(
+            'jwt.verify', 
+            ['except' => ['authenticate', 'register']]
+        );    
     }
 
 
@@ -44,7 +47,10 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors(), 400);
+            return response()->json(
+                $validator->errors(), 
+                400
+            );
         }
 
         return $this->repository->signUp($this->request->all());
@@ -69,17 +75,26 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors(), 400);
+            return response()->json(
+                $validator->errors(), 
+                400
+            );
         }
 
-        return $this->repository->changePassword($this->request->user()->id, $this->request->all());
+        return $this->repository->changePassword(
+            $this->request->user()->id, 
+            $this->request->all()
+        );
     }
 
 
 
     public function changeTheUserDetails ()
     {
-        $this->repository->updateAuthDetails($this->request->user()->id, $this->request->all());
+        $this->repository->updateAuthDetails(
+            $this->request->user()->id, 
+            $this->request->all()
+        );
     }
 
 

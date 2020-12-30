@@ -37,7 +37,10 @@ class AdminController extends Controller
 
     public function getSingleUser ($col_id)
     {
-        return $this->admin->getUser($this->request->user()->type, $col_id);
+        return $this->admin->getUser(
+            $this->request->user()->type, 
+            $col_id
+        );
     }
 
 
@@ -53,10 +56,16 @@ class AdminController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors(), 400);
+            return response()->json(
+                $validator->errors(), 
+                400
+            );
         }
 
-        return $this->admin->createUser($this->request->user()->type, $this->request->all());
+        return $this->admin->createUser(
+            $this->request->user()->type, 
+            $this->request->all()
+        );
     }
 
 
@@ -65,13 +74,20 @@ class AdminController extends Controller
 
     public function updateTheUser ($col_id)
     {
-        return $this->admin->updateUser($this->request->user()->type, $col_id, $this->request->all());
+        return $this->admin->updateUser(
+            $this->request->user()->type, 
+            $col_id, 
+            $this->request->all()
+        );
     }
 
 
 
     public function deleteTheUser ($col_id)
     {
-        return $this->admin->deleteUser($this->request->user()->type, $col_id);
+        return $this->admin->deleteUser(
+            $this->request->user()->type, 
+            $col_id
+        );
     }
 }
