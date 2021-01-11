@@ -1,0 +1,11 @@
+Instruction to run the the project successfully
+
+1. Download the project in your local machine within xampp/wampp
+2. Make sure your php version 7.4/8.0
+3. Open cmd in the project root folder then run command "composer update"
+4. Generate env file run the command "cp .env.example .env"
+5. Generate laravel key "php artisan key:generate"
+6. Make sure if you have installed jwt auth token then
+7. Run the command "php artisan jwt:secret"
+
+------- Your project is ready to run now -------

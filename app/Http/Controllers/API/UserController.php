@@ -65,6 +65,8 @@ class UserController extends Controller
         return $this->repository->loggedInUser();
     }
 
+    
+
 
     public function changePassword ()
     {

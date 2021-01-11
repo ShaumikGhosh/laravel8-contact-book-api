@@ -25,6 +25,8 @@ class User extends Authenticatable implements JWTSubject
         'type'
     ];
 
+    protected $appends = ['name_with_email'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -48,8 +50,15 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
+
+
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function getNameWithEmailAttribute ()
+    {
+        return "{$this->name} and {$this->email}";
     }
 }
